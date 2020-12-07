@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.seeyon:ctp-dbpool:trunk-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/seeyon/ctp-dbpool/trunk-SNAPSHOT/ctp-dbpool-trunk-20200904.080012-2774.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/seeyon/ctp-dbpool/trunk-SNAPSHOT/ctp-dbpool-trunk-20200904.080012-2774-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/seeyon/ctp-dbpool/trunk-SNAPSHOT/ctp-dbpool-trunk-20200904.080012-2774-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

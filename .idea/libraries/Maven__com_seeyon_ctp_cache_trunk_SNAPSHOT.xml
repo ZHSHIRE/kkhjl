@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.seeyon:ctp-cache:trunk-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/seeyon/ctp-cache/trunk-SNAPSHOT/ctp-cache-trunk-20201202.065441-708.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/seeyon/ctp-cache/trunk-SNAPSHOT/ctp-cache-trunk-20201202.065441-708-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/seeyon/ctp-cache/trunk-SNAPSHOT/ctp-cache-trunk-20201202.065441-708-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.seeyon:ctp-multirun:trunk-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/seeyon/ctp-multirun/trunk-SNAPSHOT/ctp-multirun-trunk-20200904.125605-712.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/seeyon/ctp-multirun/trunk-SNAPSHOT/ctp-multirun-trunk-20200904.125605-712-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/seeyon/ctp-multirun/trunk-SNAPSHOT/ctp-multirun-trunk-20200904.125605-712-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
