@@ -47,6 +47,14 @@ public class LoadFiles {
                         String className = file.getName().replaceAll(".java", "");
                         String fullName = pakage + "." + className;
                         //这里的路径得换成新的微服务项目地址根路径
+                        if(file.getPath().contains("cap-microservice-api\\src\\main")){
+                        //
+                            String newApiPath=ReMoveProject.microCapApi.replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm","F:\\ctp-microservice-bpm\\80sp2");
+                        }else if(file.getPath().contains("cap-microservice-core\\src\\main\\java")){
+                            String newApiPath=ReMoveProject.microCapApi.replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm","F:\\ctp-microservice-bpm\\80sp2");
+                        }else if(file.getPath().contains("ctp-microservice-v5-cap-core\\cap-core\\src\\main\\java")){
+                            String newApiPath=ReMoveProject.microCapApi.replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm","F:\\ctp-microservice-bpm\\80sp2");
+                        }
                         fileMaps.put(fullName, file.getPath());
                     }
                 }

@@ -36,7 +36,7 @@ public class FileMove {
         createParentPath(destFile);
         //不是目录的情况下进行文件复制操作
         Files.copy(file.toPath(), destFile.toPath(), StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING);
-        //Files.move(file.toPath(), destFile.toPath(), StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING);
+        //Files.move(file.toPath(), destFile.toPath(), StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING,StandardCopyOption.ATOMIC_MOVE);
 
     }
 
