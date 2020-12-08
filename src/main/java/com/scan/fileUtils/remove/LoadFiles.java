@@ -18,11 +18,11 @@ public class LoadFiles {
     //加载8.0sp1微服务项目文件
     public static void load(File path, Map fileMaps) {
         if (path.isFile()) {
-            scanClass(path,fileMaps);
+            scanClass(path, fileMaps);
         } else {
             File[] child = path.listFiles();
             for (File f : child) {
-                load(f,fileMaps);
+                load(f, fileMaps);
             }
         }
     }
@@ -30,6 +30,7 @@ public class LoadFiles {
 
     /**
      * 记录当前文件所属类和路径
+     *
      * @param file
      * @param fileMaps
      */
@@ -47,15 +48,18 @@ public class LoadFiles {
                         String className = file.getName().replaceAll(".java", "");
                         String fullName = pakage + "." + className;
                         //这里的路径得换成新的微服务项目地址根路径
-                        if(file.getPath().contains("cap-microservice-api\\src\\main")){
-                        //
-                            String newApiPath=ReMoveProject.microCapApi.replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm","F:\\ctp-microservice-bpm\\80sp2");
-                        }else if(file.getPath().contains("cap-microservice-core\\src\\main\\java")){
-                            String newApiPath=ReMoveProject.microCapApi.replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm","F:\\ctp-microservice-bpm\\80sp2");
-                        }else if(file.getPath().contains("ctp-microservice-v5-cap-core\\cap-core\\src\\main\\java")){
-                            String newApiPath=ReMoveProject.microCapApi.replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm","F:\\ctp-microservice-bpm\\80sp2");
+                        if (file.getPath().contains("cap-microservice-api\\src\\main")) {
+                            //
+                            String newPath = file.getPath().replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm", "D:\\80SP2MicroService\\newMicroservice");
+                            fileMaps.put(fullName, newPath);
+                        } else if (file.getPath().contains("cap-microservice-core\\src\\main\\java")) {
+                            String newPath = file.getPath().replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm", "D:\\80SP2MicroService\\newMicroservice");
+                            fileMaps.put(fullName, newPath);
+                        } else if (file.getPath().contains("ctp-microservice-v5-cap-core\\cap-core\\src")) {
+                            String newPath = file.getPath().replace("F:\\ctp-microservice-v5-cap-core", "D:\\80SP2MicroService\\newMicroservice");
+                            fileMaps.put(fullName, newPath);
                         }
-                        fileMaps.put(fullName, file.getPath());
+
                     }
                 }
             }
@@ -74,18 +78,18 @@ public class LoadFiles {
 
 
     //加载8.0sp2项目文件
-    public static void move(File path, Map<String,String> fileMaps) {
+    public static void move(File path, Map<String, String> fileMaps) {
         if (path.isFile()) {
-            moveClass(path,fileMaps);
+            moveClass(path, fileMaps);
         } else {
             File[] child = path.listFiles();
             for (File f : child) {
-                load(f,fileMaps);
+                move(f, fileMaps);
             }
         }
     }
 
-    public static void moveClass(File file, Map<String,String> fileMaps) {
+    public static void moveClass(File file, Map<String, String> fileMaps) {
         InputStream is = null;
         try {
             if (file.getName().endsWith(".java")) {
@@ -98,23 +102,19 @@ public class LoadFiles {
                         String pakage = pakage1.substring(0, pakage1.length() - 1);
                         String className = file.getName().replaceAll(".java", "");
                         String fullName = pakage + "." + className;
-                        if(StringUtils.isNotBlank(fileMaps.get(fullName))){
-                            //移动
-                            FileMove.copy(file,fileMaps.get(fullName));
+                        if (StringUtils.isNotBlank(fileMaps.get(fullName))) {
+                            //必须要先关闭流才能移动文件
+                            if (is != null) {
+                                is.close();
+                                //移动
+                                FileMove.move(file, fileMaps.get(fullName));
+                            }
                         }
                     }
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }

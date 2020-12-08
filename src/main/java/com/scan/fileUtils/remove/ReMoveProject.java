@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class ReMoveProject {
     public static final String microCapCore = "F:\\ctp-microservice-bpm\\ctp-microservice-bpm\\cap-microservice-core\\src\\main\\java\\com\\seeyon";
     public static final String microCapApi = "F:\\ctp-microservice-bpm\\ctp-microservice-bpm\\cap-microservice-api\\src\\main\\java\\com\\seeyon";
-    public static final String A8Controller = "F:\\ctp-microservice-v5-cap-core\\cap-core\\src\\main\\java";
+    public static final String A8Controller = "F:\\ctp-microservice-v5-cap-core\\cap-core\\src";
 
     //已经拆过微服务8。0sp1项目的结构  第一个参数为类全名，第二个参数为当前类文件地址
     private static Map<String, String> oldFileMaps = new ConcurrentHashMap<>();
@@ -51,7 +51,7 @@ public class ReMoveProject {
             service.execute(moveThread3);
             //等待计数器归零
             countDownLatch.await();
-
+            service.shutdown();
             Long endTime = System.currentTimeMillis();
             Long haoshi = endTime - startTime;
             System.out.println("耗时1>>>>" + haoshi);
@@ -59,18 +59,10 @@ public class ReMoveProject {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        //Long startTime2=System.currentTimeMillis();
-        //load(new File(microCapCore));
-        //load(new File(microCapApi));
-        //load(new File(A8Controller));
-        //Long endTime2=System.currentTimeMillis();
-        //Long haoshi2=endTime2-startTime2;
-        //System.out.println("耗时2>>>>"+haoshi2);
-        //System.out.println(fileMaps.size());
-
         //根据路径移动位置
-        LoadFiles.move(new File(""),oldFileMaps);
+        //LoadFiles.move(new File("D:\\80SP2MicroService\\80sp2\\cap-api"),oldFileMaps);
+        LoadFiles.move(new File("D:\\80SP2MicroService\\80sp2\\cap-core"),oldFileMaps);
+        System.out.println("移动完毕");
     }
 
 

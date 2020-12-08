@@ -26,7 +26,7 @@ public class FileMove {
     }
 
     /**
-     * 文件夹移动
+     * 文件夹复制
      * @param file
      * @param dest
      * @throws IOException
@@ -36,8 +36,23 @@ public class FileMove {
         createParentPath(destFile);
         //不是目录的情况下进行文件复制操作
         Files.copy(file.toPath(), destFile.toPath(), StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING);
-        //Files.move(file.toPath(), destFile.toPath(), StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING,StandardCopyOption.ATOMIC_MOVE);
 
+    }
+
+    /**
+     * 文件夹移动
+     * @param file
+     * @param dest
+     * @throws IOException
+     */
+    public static void move(File file, String dest) throws IOException {
+        File destFile = new File(dest);
+        //只有不是微服务的java文件才进行移动
+        if(!dest.contains("cap-microservice-core\\src\\main\\java\\com\\seeyon")){
+            //创建目录
+            createParentPath(destFile);
+            Files.move(file.toPath(), destFile.toPath(),StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+        }
     }
 
 }
