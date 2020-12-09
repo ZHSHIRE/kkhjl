@@ -15,8 +15,10 @@ import java.util.Map;
  * @create: 2020-12-07 18:13
  **/
 public class LoadFiles {
+
+
     //加载8.0sp1微服务项目文件
-    public static void load(File path, Map fileMaps) {
+    public static void load(File path, Map<String, String> fileMaps) {
         if (path.isFile()) {
             scanClass(path, fileMaps);
         } else {
@@ -34,7 +36,7 @@ public class LoadFiles {
      * @param file
      * @param fileMaps
      */
-    public static void scanClass(File file, Map fileMaps) {
+    public static void scanClass(File file, Map<String, String> fileMaps) {
         InputStream is = null;
         try {
             if (file.getName().endsWith(".java")) {
@@ -110,6 +112,8 @@ public class LoadFiles {
                                 FileMove.move(file, fileMaps.get(fullName));
                             }
                         }
+                        //跳过后面的行
+                        break;
                     }
                 }
             }

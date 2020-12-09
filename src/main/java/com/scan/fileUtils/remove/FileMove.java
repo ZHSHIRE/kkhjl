@@ -40,7 +40,7 @@ public class FileMove {
     }
 
     /**
-     * 文件夹移动
+     * 文件移动
      * @param file
      * @param dest
      * @throws IOException
