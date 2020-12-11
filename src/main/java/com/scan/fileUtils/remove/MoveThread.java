@@ -27,10 +27,11 @@ public class MoveThread implements Runnable {
     public void run() {
         try {
             LoadFiles.load(new File (path),fileMaps);
-            //减一
-            countDownLatch.countDown();
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            //减一
+            countDownLatch.countDown();
         }
 
     }

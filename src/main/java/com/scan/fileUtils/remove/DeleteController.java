@@ -11,7 +11,7 @@ import java.nio.file.Files;
  * 微服务中删除controller类
  **/
 public class DeleteController {
-    private static final String codePath = "D:\\80SP2MicroService\\newMicroservice\\cap-microservice-core\\src\\main\\java";
+    private static final String codePath = "D:\\80SP2MicroService\\newMicroservice\\cap-core\\src\\main\\java";
 
     public static void main(String[] args) {
         try {

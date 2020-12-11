@@ -18,7 +18,7 @@ import static org.apache.poi.hemf.record.emfplus.HemfPlusRecordType.clear;
  * 将cap-core中的类不是Controller的类删掉，成为A8的controller
  **/
 public class DeleteNoController {
-    private static final String codePath = "D:\\80SP2MicroService\\newMicroservice\\A8Controller\\A8-cap-core\\src\\main\\java";
+    private static final String codePath = "D:\\80SP2MicroService\\newMicroservice\\cap-core\\src\\main\\java";
 
     public static void main(String[] args) {
         try {
@@ -72,10 +72,6 @@ public class DeleteNoController {
         //如果为空文件夹
         if(files.length<1) {
             folder.delete();
-            //子文件删除后。父文件可能为空，将父文件也删除
-            if(folder.getParentFile().listFiles().length<1){
-                folder.getParentFile().delete();
-            }
         }
     }
 }
