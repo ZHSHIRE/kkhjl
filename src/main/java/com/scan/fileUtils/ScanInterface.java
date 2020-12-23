@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * 扫描spring xml中注入的bean,查看哪些没有实现接口，并将这些没有接口的按照Muti*.properties配置格式bean输出到文本，复制粘贴到配置文件即可
+ * 使用时，在启动微服务后通过接口调用服务插入调用ScanInterface.getFilE（）方法
  * @author: ZHSHIRE
  * @create: 2020-12-22 14:53
  **/
@@ -21,12 +22,10 @@ public class ScanInterface {
 
     //
     //@Test
-    public void getFilE() {
+    public static void getFilE() {
         tableList.add("classname,tableName,fileName");
         getAllFileName("F:\\microservice_8.0sp2test\\ctp-microservice-bpm\\ctp-microservice-bpm-web\\src\\main\\resources\\cap-core");
         System.out.println("扫描完毕");
-        //List<String> resList=tableList.stream().distinct().collect(Collectors.toList());
-        //CSVUtils.exportCsv(resList,"C:\\Users\\ZHSHIRE\\Desktop\\工作文件\\老项目拆分微服务\\没实现接口的bean\\noInterfaceBean.csv");
     }
 
     //public static void main(String[] args) {
@@ -76,7 +75,6 @@ public class ScanInterface {
                     try {
                         int start  = s.lastIndexOf(startClassname) + startClassname.length();
                         int end = s.indexOf("\"", start + 1);
-                        //System.out.println("类名：" + s.substring(start + 1, end));
                         classname = s.substring(start + 1, end);
                         Class aClass=Class.forName(classname);
                         List<Class<?>> superClazzList =new ArrayList<>();
@@ -88,23 +86,21 @@ public class ScanInterface {
                         Class<?> interfaces[] = aClass.getInterfaces();
                         if(interfaces.length<1 && interfaceList.size()<1){
                             System.out.println("classname："+classname);
-                            //结果集
-                            //tableList.add(classname+","+file.getName());
+                            //打印
                             appendFIle(path,classname+","+"\\");
                         }
                         //for (Class<?> inte : interfaces) {//打印
                         //    System.out.println("classname："+classname+">>>>>"+inte+">>>>filename"+file.getName());
                         //}
                     } catch (Exception e) {
-                        //e.printStackTrace();
+                        e.printStackTrace();
                     }
                 }
             }
             br.close();
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
-        //return result.toString();
     }
 
     //递归遍历clazz所有父类和接口
