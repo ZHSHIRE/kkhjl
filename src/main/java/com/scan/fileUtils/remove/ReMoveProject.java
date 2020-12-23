@@ -29,12 +29,12 @@ import java.util.stream.Collectors;
  * 5：将移动剩下的项目作为微服务，删掉controller类，形成微服务
  **/
 public class ReMoveProject {
-    public static final String microCapCore = "F:\\ctp-microservice-bpm\\ctp-microservice-bpm\\cap-microservice-core\\src\\main\\java\\com\\seeyon";
-    public static final String microCapApi = "F:\\ctp-microservice-bpm\\ctp-microservice-bpm\\cap-microservice-api\\src\\main\\java\\com\\seeyon";
+    public static final String microCapCore = "F:\\microservice_8.0sp2test\\ctp-microservice-bpm\\cap-microservice-core\\src\\main\\java";
+    public static final String microCapApi = "F:\\microservice_8.0sp2test\\ctp-microservice-bpm\\cap-microservice-api\\src\\main\\java";
     //public static final String A8Controller = "F:\\ctp-microservice-v5-cap-core\\cap-core\\src";
 
     //已经拆过微服务8。0sp1项目的结构  第一个参数为类全名，第二个参数为当前类文件地址
-    private static Map<String, String> oldFileMaps = new ConcurrentHashMap<>();
+    public static Map<String, String> oldFileMaps = new ConcurrentHashMap<>();
 
     public static List<String> duble=new ArrayList<>();
     //

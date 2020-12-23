@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,15 +17,16 @@ import java.util.stream.Collectors;
 public class FindHbmTable {
     private static int xmlfileCounts=1;
     //统计表的集合
-    private static List<String> tableList;
+    private static List<String> tableList=new ArrayList<>();
 
 
     @Test
     public void getFilE() {
-        getAllFileName("F:\\BreakProject\\cap-microservice-core\\cap-microservice-core\\src\\main\\java\\com\\seeyon");
+        tableList.add("classname,tableName,fileName");
+        getAllFileName("D:\\80SP2MicroService\\newMicroservice\\cap-microservice-core\\src\\main\\java");
         System.out.println("hbm.xml文件总个数"+xmlfileCounts);
         List<String> resList=tableList.stream().distinct().collect(Collectors.toList());
-        CSVUtils.exportCsv(resList,".....csv");
+        CSVUtils.exportCsv(resList,"C:\\Users\\ZHSHIRE\\Desktop\\工作文件\\老项目拆分微服务\\分库分表\\sp2圈表\\hbmTable.csv");
     }
 
     /**
@@ -34,11 +36,8 @@ public class FindHbmTable {
      * @return
      */
     public static void getAllFileName(String path) {
-
-        //ArrayList<String> files = new ArrayList<String>();
         boolean flag = false;
         File file = new File(path);
-        //clear(file);
         File[] tempList = file.listFiles();
         for (int i = 0; i < tempList.length; i++) {
             if (tempList[i].isFile()) {
@@ -59,32 +58,33 @@ public class FindHbmTable {
      * @param file
      */
     public static void txt2String(File file) {
-        final String startclassname = "<class";
+        final String startClassname = "<class name=";
         final String startTable = "table=";
         String classname = "";
         String tableName = "";
         //StringBuilder result = new StringBuilder();
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
-            String s = null;
-            while ((s = br.readLine()) != null) {//使用readLine方法，一次读一行
-
-                if (s.contains("<class") || s.contains(startTable)) {
-                    int start = s.lastIndexOf(startclassname) + startclassname.length();
+            String line = null;
+            //使用readLine方法，一次读一行
+            while ((line = br.readLine()) != null) {
+                String s = line.trim();
+                if (s.contains(startClassname)) {
+                    int start = s.lastIndexOf(startClassname) + startClassname.length();
                     int end = s.indexOf("\"", start + 1);
                     //System.out.println("类名：" + s.substring(start + 1, end));
                     classname = s.substring(start + 1, end);
-                    //System.out.println("类名："+classname);
+                }
+                if (s.contains(startTable)){
                     int tablestart = s.lastIndexOf(startTable) + startTable.length();
                     int tablEnd = s.indexOf("\"", tablestart + 1);
                     //表名
                     tableName = s.substring(tablestart + 1, tablEnd);
                     //System.out.println("表名：" + tableName);
-
-                    //结果集
-                    tableList.add(classname+","+tableName);
                 }
             }
+            //结果集
+            tableList.add(classname+","+tableName+","+file.getName());
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
