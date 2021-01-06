@@ -52,13 +52,13 @@ public class LoadFiles {
                         //这里的路径得换成新的微服务项目地址根路径
                         if (file.getPath().contains("cap-microservice-api\\src\\main")) {
                             //
-                            String newPath = file.getPath().replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm", "D:\\80SP2MicroService\\newMicroservice");
+                            String newPath = file.getPath().replace("F:\\microservice_8.0sp2test\\ctp-microservice-bpm", "C:\\Users\\ZHSHIRE\\Desktop\\sp2 hot fix2\\newMicroservice");
                             fileMaps.put(fullName, newPath);
                         } else if (file.getPath().contains("cap-microservice-core\\src\\main\\java")) {
-                            String newPath = file.getPath().replace("F:\\ctp-microservice-bpm\\ctp-microservice-bpm", "D:\\80SP2MicroService\\newMicroservice");
+                            String newPath = file.getPath().replace("F:\\microservice_8.0sp2test\\ctp-microservice-bpm", "C:\\Users\\ZHSHIRE\\Desktop\\sp2 hot fix2\\newMicroservice");
                             fileMaps.put(fullName, newPath);
                         } else if (file.getPath().contains("ctp-microservice-v5-cap-core\\cap-core\\src")) {
-                            String newPath = file.getPath().replace("F:\\ctp-microservice-v5-cap-core", "D:\\80SP2MicroService\\newMicroservice");
+                            String newPath = file.getPath().replace("F:\\ctp-microservice-v5-cap-core", "C:\\Users\\ZHSHIRE\\Desktop\\sp2 hot fix2\\newMicroservice");
                             fileMaps.put(fullName, newPath);
                         }
 

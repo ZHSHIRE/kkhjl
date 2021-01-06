@@ -29,7 +29,9 @@ import java.util.stream.Collectors;
  * 5：将移动剩下的项目作为微服务，删掉controller类，形成微服务
  **/
 public class ReMoveProject {
+    //原项目地址，用于读取原项目结构
     public static final String microCapCore = "F:\\microservice_8.0sp2test\\ctp-microservice-bpm\\cap-microservice-core\\src\\main\\java";
+    //原项目地址，用于读取原项目结构
     public static final String microCapApi = "F:\\microservice_8.0sp2test\\ctp-microservice-bpm\\cap-microservice-api\\src\\main\\java";
     //public static final String A8Controller = "F:\\ctp-microservice-v5-cap-core\\cap-core\\src";
 
@@ -64,7 +66,7 @@ public class ReMoveProject {
             service.shutdown();
             //根据路径移动位置
             //LoadFiles.move(new File("D:\\80SP2MicroService\\80sp2\\cap-api"),oldFileMaps);
-            LoadFiles.move(new File("D:\\80SP2MicroService\\80sp2\\cap-core"),oldFileMaps);
+            LoadFiles.move(new File("C:\\Users\\ZHSHIRE\\Desktop\\sp2 hot fix2\\cap-core"),oldFileMaps);
             System.out.println("移动完毕");
         } catch (Exception e) {
             e.printStackTrace();

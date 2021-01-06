@@ -40,6 +40,12 @@ public class RecordMessage {
         }
     }
 
+    /**
+     * 网指定文件中追加一行
+     * @param filePath
+     * @param content
+     * @throws IOException
+     */
     public static void appendFIle(String filePath, String content) throws IOException {
         File f = new File(filePath);
         if (!f.exists()) {

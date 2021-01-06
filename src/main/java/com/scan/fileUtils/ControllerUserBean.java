@@ -26,6 +26,7 @@ public class ControllerUserBean {
     }
     private static Map<String, String> imports = new HashMap<>(1024);
     public static void main(String[] args) {
+        //controller类代码位置
         File f = new File("F:\\BreakProject\\microSeriviceA8\\cap-core\\src\\main\\java\\com\\seeyon\\cap4");
         //Map<String, String> imports = new HashMap<>(1024);
         testLoad(f);
